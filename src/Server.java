@@ -7,9 +7,8 @@ import java.net.Socket;
 
 public class Server {
     public static void main(String[] args) {
-        try {
-            ServerSocket serverSocket = new ServerSocket(8810);
-            Socket clientSocket = serverSocket.accept(); //
+        try (ServerSocket serverSocket = new ServerSocket(8810)) {
+            Socket clientSocket = serverSocket.accept();
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -21,6 +20,5 @@ public class Server {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
 }
