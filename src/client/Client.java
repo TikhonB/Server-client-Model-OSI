@@ -1,4 +1,4 @@
-package ClientPac;
+package client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,13 +10,13 @@ public class Client {
     public static void main(String[] args) throws IOException {
         String host = "localhost";
         int port = 8810;
-        try (Socket clientSocket = new Socket(host,port);
+        try (Socket clientSocket = new Socket(host, port);
              PrintWriter out = new
-                     PrintWriter(clientSocket.getOutputStream(),true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))){
+                     PrintWriter(clientSocket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
             out.println("Тихон");
 
-            String resp =in.readLine();
+            String resp = in.readLine();
             System.out.println(resp);
         }
     }
